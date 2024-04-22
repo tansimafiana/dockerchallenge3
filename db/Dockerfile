@@ -1,3 +1,7 @@
 FROM mariadb
 
-COPY docker/db/init/init.sql /docker-entrypoint-initdb.d
+# OLD
+#COPY docker/db/init/init.sql /docker-entrypoint-initdb.d
+
+# NEW
+COPY dockerchallenge3/db/init/init.sql /docker-entrypoint-initdb.d

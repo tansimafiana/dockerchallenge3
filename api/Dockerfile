@@ -5,13 +5,19 @@ FROM node:alpine
 WORKDIR /app
 
 # Copy package.json and package-lock.json
-COPY docker/api/package*.json ./
+# OLD
+#COPY docker/api/package*.json ./
+# NEW
+COPY dockerchallenge3/api/package*.json ./
 
 # # Install dependencies
 RUN npm install
 
 # Copy the rest of the application
-COPY docker/api/* .
+# OLD
+#COPY docker/api/* .
+# NEW
+COPY dockerchallenge3/api/* .
 
 # Expose port 3000 to the outside world
 EXPOSE 3000

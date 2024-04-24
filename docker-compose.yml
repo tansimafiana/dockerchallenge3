@@ -8,7 +8,9 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_HOST: ${MYSQL_HOST}
     volumes:
+      - ./db/init/:/docker-entrypoint-initdb.d
       - db_data:/var/lib/mysql
     networks:
       - backend
@@ -18,9 +20,10 @@ services:
     restart: always
     environment:
       DB_HOST: ${DB_HOST}
-      DB_USER: ${DB_USERNAME}
+      DB_USERNAME: ${DB_USERNAME}
       DB_PASSWORD: ${DB_PASSWORD}
-      DB_NAME: ${DB_DATABASE}
+      DB_DATABASE: ${DB_DATABASE}
+      DB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
     depends_on:
       - db
     networks:

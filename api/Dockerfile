@@ -19,9 +19,12 @@ RUN npm install
 # NEW
 COPY ./* .
 
+
 # Expose port 3000 to the outside world
 EXPOSE 3000
 
 # Command to run the application
 CMD ["node", "server.js"]
 # CMD ["sleep", "infinity"]
+
+RUN echo "Node-Service Initialized"

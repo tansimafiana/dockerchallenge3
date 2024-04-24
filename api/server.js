@@ -11,8 +11,38 @@ const env = process.env;
 
 globalThis.globalStatsCounter = 0
 
-
 const memoryKeys = ['MemFree', 'MemAvailable'];
+
+//const dbSQL = fs.readFileSync(sqlPath).toString();
+/*const path = require("path");
+const dbSQL = require(path.join(__dirname, "../db/init/init.sql"));
+
+let db = new mysql.Database("db", err => {
+    if (err) {
+        return console.error("Error Accessing MySQL Database: " + err.message);
+    }
+    console.log("Successfully connected to MySQL Database.");
+});
+
+const dbArr = dbSQL.toString().split(");");
+
+db.serialize(() => {
+    db.run("PRAGMA foreign_keys=OFF;")
+    db.run("BEGIN TRANSACTION;");
+
+    dbArr.forEach(query => {
+        if (query) {
+            query += ");";
+            db.run(query, err => {
+                if (err) {
+                    throw err;
+                }
+            });
+        }
+    });
+
+    db.run("COMMIT;");
+});*/
 
 // Route to get all books
 app.get('/api/stats', (req, res) => {
@@ -59,9 +89,16 @@ const pool = mysql.createPool({
     host: env.DB_HOST, 
     user: env.DB_USERNAME,
     password: env.DB_PASSWORD,
-    database: env.DB_DATABASE
+    database: env.DB_DATABASE,
+    port: 3306
 });
 
+console.log("Environment Variables:", {
+    host: env.DB_HOST, 
+    user: env.DB_USERNAME,
+    password: env.DB_PASSWORD,
+    database: env.DB_DATABASE
+});
 
 // Route to get all books
 app.get('/api/books', (req, res) => {    
@@ -129,4 +166,13 @@ app.get('/api/books/:id', (req, res) => {
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
+    console.log("Hello World");
 });
+
+/*db.close(err => {
+    if (err) {
+      return console.error(err.message);
+    }
+
+    console.log("Closed the database connection.");
+});*/

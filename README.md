@@ -1,4 +1,4 @@
-![image](https://github.com/tansimafiana/dockerchallenge3/assets/120433020/10829925-fa4a-43c3-b40a-b86206435800)# Docker Challenge
+# Docker Challenge
 Tansima Kamal Fiana's final docker challenge
 
 ## Introduction
